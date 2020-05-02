@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Блог</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<body>
+<div th:insert="blocks/header :: header"></div>
+<div class="container mt-5 mb-5">
+    <h1>Создать сообщение</h1>
+    <form th:action="@{/message}" method="post">
+        <div class="form-group">
+            <label for="sel1">Выберите тег:</label>
+            <select type="text" name="tag" class="form-control mb-2" id="sel1">
+                <option>История</option>
+                <option>Литература</option>
+                <option>Кино</option>
+                <option>Исскуство</option>
+                <option>ИТ</option>
+                <option>Новости</option>
+            </select>
+        <textarea name="text" placeholder="Введите текст сообщения" class="form-control"></textarea><br>
+        <button type="submit" class="btn btn-success">Отправить сообщение</button>
+        </div>
+    </form>
+</div>
+</div>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>

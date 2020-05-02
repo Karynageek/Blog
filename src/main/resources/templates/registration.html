@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" >
+<head>
+    <title>Регистрация</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body class="container mt-5 mb-5">
+<div class="container-fluid h-100">
+    <div class="row align-items-center h-100">
+        <div class="col-sm-12">
+            <div class="row justify-content-center">
+                <div class="col-3">
+                    <form th:action="@{/registration}" method="post" class="form-signin">
+                        <h1 class="h3 mb-3 font-weight-normal text-center">Регистрация</h1>
+                        <label for="inputLogin" class="sr-only">Имя пользователя</label>
+                        <input type="text" name="username" id="inputLogin" class="form-control mb-2" placeholder="User Name" required="" autofocus="">
+                        <label for="inputPassword" class="sr-only">Пароль</label>
+                        <input type="password" name="password" id="inputPassword" class="form-control mb-2" placeholder="Password" required="">
+                        <div class="checkbox mb-1">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <div class="row justify-content-center"><input type="submit" value="Registration" class="btn btn-primary col-6 mb-2"/></div>
+                    </form>
+                    <div class="text-center">
+                        <a href="/login">Вернутся назад</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
