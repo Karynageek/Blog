@@ -10,9 +10,9 @@
 <div class="container mt-5">
     <h1>Блог сайта</h1>
     <div th:each="el : ${posts}" class="alert alert-info mt-2">
-        <h3 th:text="${el.title}"/>
-        <p th:text="${el.anons}"/>
-        <a th:href="'/blog/'+${el.id}">Детальнее</a>
+        <h5 class="card-title" th:text="${el.title}"/>
+        <p class="card-text" th:text="${el.anons}"/>
+        <a class="btn btn-outline-info" th:href="'/blog/'+${el.id}">Детальнее</a>
     </div>
 </div>
 </div>

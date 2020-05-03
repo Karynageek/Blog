@@ -2,10 +2,7 @@ package com.myexample.blog.models;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Message {
@@ -14,6 +11,8 @@ public class Message {
     private Integer id;
     private String text;
     private String tag;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
     private User author;
 
     public User getAuthor() {
@@ -50,8 +49,12 @@ public class Message {
 
     public Message() {
     }
-    public Message(String tag, String text ) {
+    public Message(User author, String tag, String text) {
+        this.author=author;
         this.tag=tag;
         this.text=text;
+    }
+    public String getAutorName(){
+        return  author != null ? author.getUsername() : "<none>";
     }
 }

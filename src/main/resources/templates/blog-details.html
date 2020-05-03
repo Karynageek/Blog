@@ -49,8 +49,9 @@
     <div>
         <p><b>Отзывы:</b></p>
         <div th:each="el : ${messages}" class="alert alert-info mt-2">
-            <h5 th:text="${el.tag}"/>
-            <p th:text="${el.text}"/>
+            <strong th:text="${el.getAutorName()}"/>
+            <i th:text="${el.tag}"/>
+            <span th:text="${el.text}"/>
         </div>
     </div>
 </div>

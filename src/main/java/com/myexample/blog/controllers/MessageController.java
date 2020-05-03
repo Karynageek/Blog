@@ -2,9 +2,11 @@ package com.myexample.blog.controllers;
 
 import com.myexample.blog.models.Message;
 import com.myexample.blog.models.Post;
+import com.myexample.blog.models.User;
 import com.myexample.blog.repo.MessageRepo;
 import com.myexample.blog.repo.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,14 +29,14 @@ public class MessageController {
         return "message";
     }
     @PostMapping("/message")
-    public  String messageSendAll(@RequestParam String tag, @RequestParam String text ){
-        Message message = new Message(tag, text);
+    public  String messageSendAll(@AuthenticationPrincipal User user, @RequestParam String tag, @RequestParam String text ){
+        Message message = new Message(user, tag, text);
         messageRepo.save(message);
         return "redirect:/blog";
     }
     @PostMapping("/blog/{id}")
-    public  String messageSend(@RequestParam String tag, @RequestParam String text ){
-        Message message = new Message(tag, text);
+    public  String messageSend(@AuthenticationPrincipal User user, @RequestParam String tag, @RequestParam String text ){
+        Message message = new Message(user, tag, text);
         messageRepo.save(message);
         return "redirect:/blog/{id}";
     }
