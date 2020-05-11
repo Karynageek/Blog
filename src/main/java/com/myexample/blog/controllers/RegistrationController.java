@@ -2,10 +2,9 @@ package com.myexample.blog.controllers;
 
 import com.myexample.blog.models.Role;
 import com.myexample.blog.models.User;
-import com.myexample.blog.repo.UserRepo;
+import com.myexample.blog.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -15,7 +14,7 @@ import java.util.Map;
 @Controller
 public class RegistrationController {
     @Autowired
-    private UserRepo userRepo;
+    private UserRepository userRepository;
 
     @GetMapping("/registration")
     public String registration(){
@@ -23,14 +22,14 @@ public class RegistrationController {
     }
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model){
-        User userFromDb =userRepo.findByUsername(user.getUsername());
+        User userFromDb = userRepository.findByEmail(user.getEmail());
         if(userFromDb !=null){
-            model.put("message", "User exist!");
+            model.put("message", "Email exist!");
             return "registration";
         }
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
-        userRepo.save(user);
+        userRepository.save(user);
         return "redirect:/login";
     }
 }

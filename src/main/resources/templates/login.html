@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" >
 <head>
-    <title>Авторизация</title>
+    <title>Log in</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
@@ -14,13 +14,13 @@
             <div class="row justify-content-center">
                 <div class="col-3">
                         <form th:action="@{/login}" method="post">
-                        <h1 class="h3 mb-3 font-weight-normal text-center">Авторизация</h1>
-                        <label for="inputLogin" class="sr-only">Имя пользователя</label>
-                        <input type="text" name="username" id="inputLogin" class="form-control mb-2" placeholder="User Name" required="" autofocus="">
-                        <label for="inputPassword" class="sr-only">Пароль</label>
+                        <h1 class="h3 mb-3 font-weight-normal text-center">Log in</h1>
+                        <label for="inputLogin" class="sr-only">Enter Email</label>
+                        <input type="text" name="email" id="inputLogin" class="form-control mb-2" placeholder="Email" required="" autofocus="">
+                        <label for="inputPassword" class="sr-only">Password</label>
                         <input type="password" name="password" id="inputPassword" class="form-control mb-2" placeholder="Password" required="">
                             <div th:if="${param.error}" class="alert alert-danger" role="alert">
-                                Invalid username or password!
+                                Invalid email or password!
                             </div>
                             <div th:if="${param.logout}" class="alert alert-info" role="alert">
                                 You have been logged out!
@@ -33,7 +33,7 @@
                         <div class="row justify-content-center"><input type="submit" value="Sign In" class="btn btn-primary col-6 mb-2"/></div>
                     </form>
                     <div class="text-center">
-                    <a href="/registration">Зарегистрироватся</a>
+                    <a href="/registration">Log up</a>
                     </div>
                 </div>
             </div>
